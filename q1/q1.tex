@@ -1,0 +1,137 @@
+\documentclass[10pt]{article}
+\textheight=9.25in \textwidth=7in \topmargin=-.75in
+ \oddsidemargin=-0.25in
+\evensidemargin=-0.25in
+\usepackage{url}  % The bib file uses this
+\usepackage{graphicx} %to import pictures
+\usepackage{amsmath, amssymb}
+\usepackage{theorem, multicol, color}
+\usepackage{gfsartemisia-euler}
+
+\setlength{\intextsep}{5mm} \setlength{\textfloatsep}{5mm}
+\setlength{\floatsep}{5mm}
+\setlength{\parindent}{0em} % new paragraphs are not indented
+\setcounter{MaxMatrixCols}{20}
+\usepackage{caption}
+\captionsetup[figure]{font=small}
+
+
+%%%%  SHORTCUT COMMANDS  %%%%
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\arc}{\rightarrow}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\blank}{\underline{\hspace{0.33in}}}
+\newcommand{\qand}{\quad and \quad}
+\renewcommand{\stirling}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+\newcommand{\dydx}{\ds \frac{d y}{d x}}
+\newcommand{\ddx}{\ds \frac{d}{d x}}
+\newcommand{\dvdx}{\ds \frac{d v}{d x}} 
+\newcommand{\solution}{\color{blue}\textit{Solution:} \color{black} }
+%%%%  footnote style %%%%
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushright}
+Chandler Justice - A02313187
+\end{flushright}
+\noindent \underline{\hspace{3in}}\\
+\textbf{Math 6400} Quiz \#1\\
+\textbf{Due:} January 9, 2026 @ 23:59\\
+
+	\noindent Please access the \emph{World Wide Web of EverythingAllTheTime} and apprise yourself of the following categories of Mathematical Philosophies (MPs): Platonism, Logicism, Formalism, and Intuitionism. Also, search for ``Math as a language'' which is arguably a mathematical philosophy whose name essentially describes itself.  
+	
+	\noindent Please contemplate what implications thinking in the following ways has: (1) Math is a language, (2) Platonism is correct, (3) Logicism is correct, (4) Formalism is correct, (5) Intuitionism is correct.  No need for a response; just ... contemplate.
+	
+	\begin{enumerate} 
+		\item Identify 2 of the 5 MPs that are contrary to one another, meaning you're an idiot if you say ``I'm a bit of an X and a bit of a Y as far as my MP is concerned'' (where X and Y are variables over the set of MPs).\\
+
+        \solution  Formalism and Platonism are at odds with each other in their philosophies of the scope of an
+        object. Formalism asserts that \textit{a thing is what it is and nothing more}. For example, a formalist believes
+that mathematics is simply the symbols and the rules/axiomatic system we assert on those symbols. This
+contrasts directly with Platonism’s stance on objects. A Platonist believes that objects have meaning beyond
+their asserted meaning (IE, an axiomatic system has a reality that is beyond our representation and under-
+standing). These philosophies embody the \textit{math is invented} and \textit{math is discovered} opinions respectively,
+and therefore claiming to possess both philosophies is moronic.
+	
+		
+		\item Do you think Mathematics is invented or discovered?  
+        Explain, as best you can.\\
+
+\solution I believe mathematics is invented to formalize systems we observe or imagine existing. For
+example, the Greeks utilized measures and lengths to represent units in their mathematical systems and
+from there were able to deduce several theorems, postulates, properties, etc regarding geometry which
+were applicable to the problems they were trying to solve at that time. This story is largely unchanged
+from the way math moves forward today. For example, we often want to model physical phenomena on
+computers; however, these phenomena are often defined using continuous differential equations which we
+either have no chance of solving in a discrete space like a computer or the amount of compute time required
+is prohibitively high. Therefore, we invent new methods for solving these equations in the constraints
+inhibited by a computer such as a finite $\{$ difference, element, volume $\}$ method. While finite difference
+methods were initially introduced by Euler in the 1700s, they were not popularized until the 1950s when we
+started simulating physical phenomena in computers. Work is still done today to improve the fidelity and
+accuracy of these methods and to increase the scope of their applications. My motivation for saying all that
+is that if we did not have the desire to formalize physical phenomena using differential equations and
+then further simulating those phenomena in a computer, these mathematical techniques and formalizations
+may not have come about; therefore, we can see that these constructs are invented and are pure thought
+stuff.\\
+
+Beyond this, mathematics often introduces ideas/concepts where applications are not known upon inception, but these ideas are built on the foundation of existing mathematics and are invented as extensions of existing formalisms by the mathematician. 
+	
+		\item Which number has a more well-defined existence: $1$ or $\sqrt{2}$.
+		Please justify your response.
+		
+\solution The set of integers and by extension the natural numbers, in my opinion, is a set which better
+reflects reality than the complex or real numbers. With this assertion, the number $1$ naturally has a more
+well defined existence as it is a member of the natural numbers while $\sqrt{2}$ is not. With that said, we can
+observe $\sqrt{2}$ in the real world in places such as a right triangle with $a = b = 1$, meaning $c = \sqrt{2} \approx 1.41$.
+Even if we believe $\sqrt{2}$ is a ``weaker'' number by virtue of being irrational, there are many places where it
+is an absolutely necessary representation such as in geometric and algebraic settings. With that said, by
+virtue of $1$ being a discrete object, it is able to serve more roles as a numeric object versus $\sqrt{2}$. For example,
+you cannot have $\sqrt{2}$ slices of pizza or $\sqrt{2}$ of anything for that matter.
+
+
+
+		\item A {\bf prime number} is a positive integer greater than $1$ that has only itself and $1$ as divisors\footnote{Suppose $a$ and $b$ are integers; $a$ is a {\bf divisor} of $b$ if $b = ak$, for some integer $k$.}.  
+		Is the following argument (think of it as a proof) correct?  If so, what has it proved?  
+		Please justify your response.
+		
+		\emph{Maybe a Proof of Something:} Suppose $A,B$ and $C$ are all the prime numbers (and that they're all different).  
+		Compute $N = ABC+1$. Either $N$ is prime or it's not.  
+		If it's prime, then this contradicts the assumption that $A,B,$ and $C$ are all the prime numbers. 
+		If it is not prime, then it has $A,B,$ or $C$ as a divisor. 
+		But the reader can verify that neither $A$ nor $B$ nor $C$ can be a divisor of $N$.
+		Therefore, $A,B,$ and $C$ do not comprise the entirety of prime numbers; in particular, there is another prime number, say $D$. 
+		The argument may be repeated to conclude $A,B,C,$ and $D$ are not all the prime numbers.\\
+		
+        \solution The intent with this proof is to show there are always more primes than a set of primes contains;
+however, it is not motivated why if the number $N$ is not prime, then it must have $A, B$ or $C$ as a divisor.
+This proof is almost correct; however, the phrase ``If it is not prime, then it has $A, B$ or $C$ as a divisor''
+should be replaced with something like ``$N$’s prime factorization will contain a prime $D$ which is unique
+from $A, B$ and $C$''. With this fix, this proof is now suitable for showing that given a set of prime numbers,
+there is always another prime number not included in the provided set.
+		
+		\item  Without using any technology (other than something to write with), compute, with as much precision as you can, the number $x$ such that $x^2 = 2$.   
+		
+            \solution From algebra classes, we know $(\sqrt{2})^2 = 2$; however, we want to determine the actual numerical
+            value of $\sqrt{2}$ with the tightest bounds we can set (as was explained in class). We can start with initial
+            bounds $1 < \sqrt{2} < 2$ since $1^2 = 1$ and $2^2 = 4$. We can tighten our bounds by lowering the upper bound and
+            increasing the lower bound until we find the tightest bound we can bother to compute by hand\footnote{in my last submission, I did it by hand. With the new information I can use a calculator, I will try to be more precise in this submission}. I know $\sqrt{2} \approx 1.41$ from memory, so we can tighten from there. We can see $(1.41)^2 = 1.9881$ and $(1.42)^2 = 2.0164$,
+            so $1.41 < \sqrt{2} < 1.42$. We can see $(1.417)^2 = 2.007889$ and $(1.412)^2 = 1.993744$. Let's zero in on the last decimal place and determine where the line is between a value starting with $1.9$ and a value starting with $2.0$. Using a calculator now, we can see $(1.414)^2 = 1.999396$ and $(1.415)^2 = 2.002225$ meaning $1.414 < \sqrt{2} < 1.415$. We should add additional precision to our lower bound to get a closer approximation, and then replace our upper bound with this new approximation. We then find $(1.4143)^2 = 2.00024449$, so $1.4140 < \sqrt{2} < 1.4143$. After a few additional iterations, we find the approximation $(1.414214)^2 = 2.000001238$. If we subtract $0.000001$ from this upper bound, we get $(1.414213)^2 = 1.999998409$ as a new lower bound. This gives us the final approximation I am going to compute of $1.414213 < \sqrt{2} < 1.414214$.\\
+
+            This is more than enough precision for pretty much any application of $\sqrt{2}$. We can compute our error using $\frac{b - a}{2}$ where $b$ is the upper bound and $a$ is the lower bound to be $1.4142135 \times 10^{-6}$. This is extremely low error and therefore our bounds serve as a suitable approximation of $\sqrt{2}$.
+		
+	\end{enumerate}
+	
+
+
+\noindent \underline{\hspace{3in}}\\
+
+\end{document}
+
