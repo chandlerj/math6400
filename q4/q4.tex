@@ -1,0 +1,104 @@
+\documentclass[10pt]{article}
+\textheight=9.25in \textwidth=7in \topmargin=-.75in
+ \oddsidemargin=-0.25in
+\evensidemargin=-0.25in
+\usepackage{url}  % The bib file uses this
+\usepackage{graphicx} %to import pictures
+\usepackage{amsmath, amssymb}
+\usepackage{theorem, multicol, color}
+\usepackage{gfsartemisia-euler}
+\usepackage{ulem}
+\setlength{\intextsep}{5mm} \setlength{\textfloatsep}{5mm}
+\setlength{\floatsep}{5mm}
+\setlength{\parindent}{0em} % new paragraphs are not indented
+\setcounter{MaxMatrixCols}{20}
+\usepackage{caption}
+\captionsetup[figure]{font=small}
+
+
+%%%%  SHORTCUT COMMANDS  %%%%
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\arc}{\rightarrow}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\blank}{\underline{\hspace{0.33in}}}
+\newcommand{\qand}{\quad and \quad}
+\renewcommand{\stirling}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+\newcommand{\dydx}{\ds \frac{d y}{d x}}
+\newcommand{\ddx}{\ds \frac{d}{d x}}
+\newcommand{\dvdx}{\ds \frac{d v}{d x}} 
+\newcommand{\solution}{\color{blue} Solution: \color{black}}
+%%%%  footnote style %%%%
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushright}
+Chandler Justice - A02313187
+\end{flushright}
+\noindent \underline{\hspace{3in}}\\
+\textbf{CLASS:} Quiz \#4\\
+\textbf{Due:} March 6, 2026 @ 23:59\\
+
+	\begin{enumerate}
+		\item Prove the following lemma.
+		
+            {\bf Lemma 1.} \emph{Every odd integer can be expressed as the difference of $2$ square \xout{positive} \textit{non-negative} integers.}
+	
+        \solution Observe the following sequence of square positive values:
+        
+        \begin{center}
+            \begin{tabular}{|l|l|}
+            $s_n$ & 01 ~ 04 ~ 09 ~ 16 ~ 25 ~ 36 ~ $\cdots$\\
+            \hline
+            $s_{n + 1} - s_n$ & ~ 03 ~ 05 ~ 07 ~ 09 ~ 11 ~ $\cdots$
+            \end{tabular}
+        \end{center}
+        
+        This hints that it isn't just the difference of two arbitrary squares, but two subsequent squares. Observe the following sequence $o_n$\footnote{$o$ for odd :)} for $n \geq 0$:
+
+        \begin{align*}
+            o_n &= (n + 1)^2 - n^2\\
+                &= n^2 + 2n + 1 - n^2\\
+                &= 2n + 1
+        \end{align*}
+        Then we can see $o_n = 2n + 1$ produces the sequence of odd positive integers. For any $n$, we can see the value will always be odd as it is some value with $2$ as a divisor which is then incremented by one, meaning the value no longer has $2$ as a divisor and is odd. Therefore, $o_n$ produces the sequence of odd integers. $\hfill\blacksquare$\\
+
+		\item Use Lemma 1 to prove $$\sum_{k=1}^n (2k-1) = n^2.$$
+		
+            \solution We can see that this is a summation over every odd integer between $1$ and $n$. The sequence we obtain from lemma $1$ started at $0$, but we can see $o_{n-1} = n^2 - (n - 1)^2$ corrects the summation we found in problem 1 for the bounds of the summation. Observe
+            \[\sum_{k=1}^n (2k - 1) = \sum_{k=1}^n [k^2 - (k-1)^2]\]
+            We can see this creates a telescoping sum
+            \begin{align*}
+                \sum_{k=1}^n [k^2 - (k-1)^2] &= (1^2 - 0^2) + (2^2 - 1^2) + (3^2 - 2^2) + \cdots + (n^2 - (n-1)^2)\\
+                                             &= n^2 - 0^2\\
+                                             &= n^2
+            \end{align*}
+            Therefore, $LHS = RHS. \hfill\blacksquare$
+		\item Use figureative- or polygonal-number reasoning and the figure below to derive a formula for $\ds\sum_{k=1}^n k^2$.
+		
+		
+		\begin{center}
+			\includegraphics[scale=0.6]{sum_of_squares_suggestion.pdf}
+		\end{center}
+		
+		\item Let $t_n$ denote the $n^{\mbox{th}}$ triangular number ($t_1 = 1, t_2 = 3, t_4 = 6, \dots$) and $T_n$ denote $t_1 + t_2 + \cdots +t_n$ (these are sometimes called the \emph{tetrahedral numbers}).  Show that $\ds \sum_{k=1}^n k^2 = t_{n} + 2T_{n-1}$.
+		
+		\item Prove the Fundamental Theorem of Arithmetic using propositions from \emph{Euclid's Elements}. Use the propositions with impunity; you don't need to prove them. 
+		
+		{\bf The Fundamental Theorem of Arithmetic.} \emph{Every positive integer $n > 1$ can be expressed uniquely (disregarding their order) as the product of primes.}
+		
+		
+	\end{enumerate}
+
+
+\noindent \underline{\hspace{3in}}\\
+
+\end{document}
+
