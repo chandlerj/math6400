@@ -1,5 +1,5 @@
 \documentclass[10pt]{article}
-\textheight=9.25in \textwidth=7in \topmargin=-.75in
+\textheight=9.45in \textwidth=7in \topmargin=-.95in
  \oddsidemargin=-0.25in
 \evensidemargin=-0.25in
 \usepackage{url}  % The bib file uses this
@@ -43,7 +43,7 @@
 Chandler Justice - A02313187
 \end{flushright}
 \noindent \underline{\hspace{3in}}\\
-\textbf{CLASS:} Quiz \#4\\
+\textbf{MATH6400:} Quiz \#4\\
 \textbf{Due:} March 6, 2026 @ 23:59\\
 
 	\begin{enumerate}
@@ -98,7 +98,7 @@ Chandler Justice - A02313187
                              &= \frac{1}{2}\sum_{k=1}^n k(k+1) + \frac{1}{2}\sum_{k=1}^n k(k-1)\\
         \end{align*}
         At this point, we employ discrete calculus to push us along to a closed from. Recall that \textit{falling factorials} have the form
-        \[k^n = k(k-1)(k-2)\cdots(k-n+1)\]
+        \[k^{(n)} = k(k-1)(k-2)\cdots(k-n+1)\]
         then we can see $k^{(2)} = k(k-1)$ and apply the antidifference of the summation of a falling power directly. Recall
     \[\sum_{k=1}^n k^{(r)} = \frac{(n+1)^{(r+1)}}{r+1}\]
     So the second summation has closed form
@@ -106,17 +106,63 @@ Chandler Justice - A02313187
     Our first summation we need to manipulate a bit. Observe
     \[\frac{1}{2}\sum_{k=1}^n k(k+1) = \frac{1}{2} \sum_{k=1}^n (k^{(2)} + 2k) \]
     Then we can see our closed form is
-    \[\frac{n(n-1)(n-2)}{6} + \frac{n(n-1)(n-2)}{6} + \frac{n(n-1)}{2}\]
+    \[ \frac{(n+1)(n)(n-1)}{6}+  \frac{(n+1)(n)(n-1)}{6}+ \frac{(n+1)n}{2}\]
     which simplifies to 
-    \[\frac{n(n+1)(2n+1)}{6}\]
-    the closed form of $n^3$.
+    \[\sum_{k=1}^n k^2 = \frac{n(n+1)(2n+1)}{6}\]
+    the closed form of $\sum_{k=1}^n k^2$.\footnote{We could have also done discrete derivatives and used discrete Taylor theorem to derive the closed form, but it wasn't intuitive to me how to relate that to the figure.}
 
-        \item Let $t_n$ denote the $n^{\mbox{th}}$ triangular number ($t_1 = 1, t_2 = 3, t_4 = 6, \dots$) and $T_n$ denote $t_1 + t_2 + \cdots +t_n$ (these are sometimes called the \emph{tetrahedral numbers}).  Show that $\ds \sum_{k=1}^n k^2 = t_{n} + 2T_{n-1}$.
+        \item Let $t_n$ denote the $n^{\mbox{th}}$ triangular number ($t_1 = 1, t_2 = 3, t_4 = 6, \dots$) and $T_n$ denote $t_1 + t_2 + \cdots +t_n$ (these are sometimes called the \emph{tetrahedral numbers}).  Show that $\ds \sum_{k=1}^n k^2 = t_{n} + 2T_{n-1}$.\\
+
+            \solution From our last solution we know
+            \[\sum_{k=1}^n k^2 = \frac{n(n+1)(2n+1)}{6}\]
+            So then we can show the following equality to prove the claim
+            \[ \frac{n(n+1)(2n+1)}{6} = t_n + 2T_{n-1}\]
+            Observe the following manipulations
+            \begin{align*}
+                \frac{n(n+1)(2n+1)}{6} &= t_n + 2T_{n-1}\\
+                                       &= \frac{n(n+1)}{2} + 2 \sum_{i=1}^{n-1} \frac{i(i+1)}{2}\\
+                                       &= \frac{n(n+1)}{2} + \frac{n(n-1)(n+1)}{3}\\
+                                       &= \frac{3n(n+1) + 2n(n-1)(n+1)}{6} \\
+                                       &= \frac{3n^2 + 3n + 2n^3 + 2n^2 - 2n^2 - 2n}{6} \\
+                                       &= \frac{2n^3 + 3n^2 + n}{6} \\
+                                       &= \frac{n(n+1)(2n+1)}{6} \\
+            \end{align*}
+            Therefore, $LHS = RHS. \hfill\blacksquare$
 		
 		\item Prove the Fundamental Theorem of Arithmetic using propositions from \emph{Euclid's Elements}. Use the propositions with impunity; you don't need to prove them. 
 		
 		{\bf The Fundamental Theorem of Arithmetic.} \emph{Every positive integer $n > 1$ can be expressed uniquely (disregarding their order) as the product of primes.}
 		
+        \solution A few parts of Euclid's elements will be relevant to proving \textbf{The Fundamental Theorem of Arithmetic}. We can start with Book VII Prop. 30
+        \begin{center}
+            \textit{If two numbers by multiplying one another make some number, and any prime number measure the product, it will also measure one of the original numbers.} 
+        \end{center}
+
+        This is to say that given two numbers $a,b$, if $p$ is a divisor of $ab$ then $p$ is also a divisor of $a$ or $b$. The next proposition, Prop. 31, says
+
+        \begin{center}
+            \textit{Any composite number is measured by some prime number. }
+        \end{center}
+
+         Any number which is not prime has a prime $p$ as a divisor. The next proposition says
+
+        \begin{center}
+            \textit{Any number either is prime or is measured by some prime number.}
+        \end{center}
+
+        which reinforces the idea presented in the previous proposition. Given some number, it is a prime $p$, or has some $p$ as a divisor.\\
+
+        The last piece we need is Book IX Prop. 14
+
+        \begin{center}
+            \textit{If a number be the least that is measured by prime numbers, it will not be measured by any other prime number except those originally measuring it. If a number be the least that is measured by prime numbers, it will not be measured by any other prime number except those originally measuring it.}
+        \end{center}
+        
+        A modern interpretation of this proposition is that the smallest number measured by a set of primes will not be measured by any other prime values.\\
+
+        Cool. Lets derive \textbf{The Fundamental Theorem of Arithmetic} from these propositions. Let $n$ be a positive integer such that $n > 1$. If $n$ is prime, then we are done, so assume $n$ is composite. Assume all values $1 < m < n$ has a prime factorization. Then we can see since $n$ is composite it can be expressed $n = ab$ where $a,b < n$. By the inductive hypothesis, we know $a,b$ have prime factorizations, and therefore $n$ has a prime factorization.\\
+
+        We know $n$ has a prime factorization, but we need to show it is a unique prime factorization. Suppose $n$ has two prime factorization $n = p_1p_2 \cdots p_k = q_1q_2 \cdots q_m$. By book VII Prop. 30, we know $p_1 = q_i$ for some $i$. We can repeatedly do this until we find they are the same factorization. We know they are the same by Book IX Prop. 14, which forces that both prime factorizations must be the same. Therefore, $n$ an integer $n > 1$ has a unique prime factorization. $\hfill\blacksquare$
 		
 	\end{enumerate}
 
