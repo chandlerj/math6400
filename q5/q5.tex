@@ -1,0 +1,154 @@
+
+\documentclass[10pt]{article}
+\textheight=9.25in \textwidth=7in \topmargin=-.75in
+ \oddsidemargin=-0.25in
+\evensidemargin=-0.25in
+\usepackage{url}  % The bib file uses this
+\usepackage{graphicx} %to import pictures
+\usepackage{amsmath, amssymb}
+\usepackage{theorem, multicol, color}
+\usepackage{gfsartemisia-euler}
+
+\setlength{\intextsep}{5mm} \setlength{\textfloatsep}{5mm}
+\setlength{\floatsep}{5mm}
+\setlength{\parindent}{0em} % new paragraphs are not indented
+\setcounter{MaxMatrixCols}{20}
+\usepackage{caption}
+\captionsetup[figure]{font=small}
+
+
+%%%%  SHORTCUT COMMANDS  %%%%
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\arc}{\rightarrow}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\blank}{\underline{\hspace{0.33in}}}
+\newcommand{\qand}{\quad and \quad}
+\renewcommand{\stirling}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+\newcommand{\dydx}{\ds \frac{d y}{d x}}
+\newcommand{\ddx}{\ds \frac{d}{d x}}
+\newcommand{\dvdx}{\ds \frac{d v}{d x}} 
+\newcommand{\solution}{\color{blue}\textbf{Solution:} \color{black}}
+
+%%%%  footnote style %%%%
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushright}
+Chandler Justice - A02313187
+\end{flushright}
+\noindent \underline{\hspace{3in}}\\
+\textbf{CLASS:} Homework \#\\
+\textbf{Due:}blah blah blah\\
+
+
+	\noindent{\bf \large The Jewel in the Crown of Book IX of the \emph{Elements}}\\
+	
+	\noindent A \emph{perfect number} is that which is equal to the sum of its own parts.  -- \emph{Elements, Book VII, Definition 22.} \\
+	
+	\noindent \textsf{Modernized:} A positive integer is \emph{perfect} if it is equal to the sum of its proper divisors.
+	
+	\begin{quotation}
+		\noindent \emph{If as many numbers as we please beginning from a unit are set out continuously in double proportion until the sum of all becomes prime, and if the sum multiplied into the last makes some number, then the product is perfect.} \\ 
+		\hspace{3in.} -- Euclid, \emph{Elements,} Book IX, Proposition 36.
+	\end{quotation}
+	
+	The concept of \emph{perfect number} and the questions Euclid's theorem (Proposition 36 above) imply (Is every perfect number even?  Is there a largest perfect number?) have inspired research for over 2000 years.  
+	The most substantial progress on the subject since Euclid was made by Euler in the mid 1700's.
+	Euler's progress was supported by his invention of the  \emph{divisor sum} function, customarily denoted by $\sigma$.  
+	If $n \in \Z^+$, $\sigma(n) = \sum_{ d \,\mid \, n} d$.  
+	The divisor function has the following properties, most of which are consequences of its definition, while the 5th is profound and was proved by Euler. 
+	\begin{enumerate}
+		\item[$\sigma$-1.] $p$ is prime if and only if $\sigma(p) = p+1$.
+		\item[$\sigma$-2.] $N$ is perfect if and only if $\sigma(N) = 2N$.
+		\item[$\sigma$-3.] If $p$ is prime, and $r \in \Z^+$, then $\sigma(p^r) = \frac{p^{r+1}-1}{p-1}$.
+		\item[$\sigma$-4.] If $p$ and $q$ are different primes, then $\sigma(pq) = (p+1)(q+1)$.
+		\item[$\sigma$-5.] If $\gcd(a,b)=1$, then $\sigma(ab) = \sigma(a)\sigma(b)$.
+	\end{enumerate}
+	
+	Euler proved what you're asked to prove in Prompt  \#2 by the properties of this function.\\
+	
+	
+	\noindent{\bf \large Euclid versus the Water Fountain Puzzle}\\
+	
+	Suppose we have two irregularly-shaped and non-graduated jugs $A$ and $B$ with positive integer capacities $a$ and $b$ units, respectively.
+	Suppose also that $a < b$.
+	We must use these jugs to precisely measure $N$ units of water, where $0 \leq N \leq b$;
+	the desired quantity of water will be in jug $B$.\\
+	
+	\begin{description}
+		\item[Computerized (thoughtless) Euclidean Algorithm (CEA).] \emph{Algorithm for Precisely Measuring Water with $A$ and $B$.}
+		\item[Step One.] Fill $A$;
+		\item[Step Two.] Pour the contents of $A$ into $B$ and if $B$ ever becomes full, empty it and continue pouring $A$ into $B$.
+	\end{description}
+	\emph{Definition:} An \emph{iteration} of the CEA is completed when $A$ is empty.\\
+	
+	Here's an example of the CEA in action.\\
+	
+	$\begin{array}{|c|c|c|c|c|c|c|c|c|} \hline \mbox{State} & \mbox{Action} & \mbox{State} & \mbox{Action} & \mbox{State} & \mbox{Action} &  \mbox{State} & \mbox{Action} & \mbox{State} \\ \hline \hline
+		(0,0) & \mbox{Fill $A$} & (21,0) & \mbox{Pour $A$ into $B$} & (0,21)
+		& & & &  \\ (0,21) & \mbox{Fill $A$} & (21,21) & \mbox{Pour $A$ into $B$} & (16,26) & \mbox{Empty $B$} & (16,0) & \mbox{Pour $A$ into $B$} & (0,16) \\
+		(0,16) & \mbox{Fill $A$} & (21,16) & \mbox{Pour $A$ into $B$} & (11,26) & \mbox{Empty $B$} & (11,0)  & \mbox{Pour $A$ into $B$} & (0,11)\\
+		(0,11)& \mbox{Fill $A$} & (21,11) & \mbox{Pour $A$ into $B$} & (6,26) & \mbox{Empty $B$} & (6,0) & \mbox{Pour $A$ into $B$} & (0,6) \\
+		(0,6) & \mbox{Fill $A$} & (21,6) & \mbox{Pour $A$ into $B$}& (1,26)  & \mbox{Empty $B$} & (1,0)& \mbox{Pour $A$ into $B$ } & (0,1) \\
+		(0,1) & \mbox{Fill $A$} & (21,1) &\mbox{Pour $A$ into $B$} & (0,22) & &&& \\
+		(0,22) &\mbox{Fill $A$} & (21,22) & \mbox{Pour $A$ into $B$} & (17,26) & \mbox{Empty $B$} &(17,0)& \mbox{Pour $A$ into $B$} & (0,17) \\
+		(0,17)& \mbox{Fill $A$}& (21,17)& \mbox{Pour $A$ into $B$} &(12,26) &\mbox{Empty $B$}& (12,0)& \mbox{Pour $A$ into $B$} & (0,12) \\
+		(0,12) & \mbox{Fill $A$} & (21,12) & \mbox{Pour $A$ into $B$} & (7,26)& \mbox{Empty $B$} & (7,0) & \mbox{Pour $A$ into $B$} & (0,7) \\
+		
+	\end{array}$\\
+	
+	
+	\noindent Note that the CEA was iterated $9$ times, and jug $B$ was emptied $7$ times, and $7 = 21(9) + 26(-7)$. \\
+	
+	\noindent{\bf \Large Prompts:}
+	
+	
+	\begin{enumerate}
+		\item Verify that a number of the form $(2^n -1)2^{n-1}$ is perfect if $2^n -1$ is prime, but not perfect if $2^n-1$ is not prime. 
+		
+		\item Prove that if $n \in \Z^+$ is even and perfect, then $n = (2^p-1)2^{p-1}$, where $2^p-1$ is prime.     
+		
+		
+		\item Suppose $ax+by = c$, with $a,b,c \in \Z^+$, $a < b$, and $0 \leq c \leq b$.  
+		Use the CEA to prove that the equation $ax+by = c$ has a solution with $x, y \in \Z$ if $\gcd(a,b) =1$.  
+		I suggest proving the following lemmas.
+		
+		{\bf Lemma 1.} \emph{If $L$ is an integer linear combination of $a$ and $b$, then the coefficient on $a$ can be chosen so that it is positive.}
+		
+		{\bf Lemma 2.} \emph{Let $d$ be a positive integer, $a$ and $b$ the capacities of jugs $A$ and $B$, respectively, and $j_1$ and $j_2$ are amounts of water found in jugs $A$ and $B$ at some state. If $d \mid a$ and $d \mid b$, then $d \mid j_1$ and $d \mid j_2$.} 
+		
+		{\bf Lemma 3.} \emph{Suppose $d$ is any common divisor of $a$ and $b$ and that $d \mid N$. If $N = ak + by$, where $k$ is a positive integer, $y$ an integer, and $0 \leq N \leq b$, then jug $B$ will contain $N$ units of water after $k$ iterations of the Computerized Euclidean Algorithm.}\\
+
+		\solution Lets start by gaining a better understanding of these lemmas
+
+        \textit{Proof of Lemma 1:} This one is pretty intuitive. We are saying we have a value $L = ax + by$, and we want to be able to express $L$ such that $x > 1$. 	Lets replace $x$ and $y$ with $(x + b)$	 and $(y - a)$ respectively. Then we see
+        \begin{align*}
+            L &= a(x+b) + b(y - a)\\
+              &= ax + ab + by - ab\\
+              &= ax + by
+        \end{align*}
+        With $(x + b)$, we can pick a sufficiently large $b$ such that the value is positive.
+
+        \textit{Proof of Lemma 2:} We can see that $d$ is a divisor of both $a$ and $b$. This means $a$ and $b$ share some common divisor $d$. Since these values share this divisor, it will always be a divisor of whatever the state of the jugs (which is analogous to a linear combination). 
+
+        Lets proceed via induction on the CEA algorithm. We can see the trivial cases are $j_1$ or $j_2$ is equal to $a$ or $b$. Additionally, states where a jug is empty are also trivial. Then the inductive case is always some linear combination of $a$ and $b$. Without loss of generality, lets assume we are pouring jug $A$ into jug $B$. Then we can see that when we pour $A$ into $B$ the value of jug $B$, $j_2$, is one of two cases: either $B$ is full, or $B$ does not fill up in which case $j_2 = j_{1, t-1} + j_{2, t-1} = (\alpha + \gamma)a + (\beta + \delta)b$. If some remainder of $A$ remains after $B$ is full, this remainder will also be a linear combination of $a$ and $b$. By induction, we can see $j_{1, t-1} = \alpha a + \beta b$ and $j_{2, t-1} = \gamma a + \delta b$ where $\alpha, \beta, \delta, \gamma \in \Z$. Then $j_1 = j_{1, t-1} + j_{2, t-1} - b = (\alpha + \gamma)a + (\beta + \delta - 1)b$, a linear combination of $a$ and $b$. Therefore $d|a ~\&~ d|b \Rightarrow d|j_1 ~\&~ d|j_2$.\\
+
+        \textit{Proof of Lemma 3:} This characteristic is outlined in the example of CEA given above. Observe that $k$ corresponds to the number of times the bucket $a$ is empty, and $y$ is the negative of the number of times the bucket $B$ is emptied throughout those iterations.\\
+
+        Lets proceed by induction on $k$. Our base case is $k=1$, we fill $A$ and pour it into $B$, this is expressed algebraically as $N = 1a + 0b$. Now, our inductive hypothesis is that $N = ak + by$. Then when we pour another round of jug $A$ into $B$, we obtain $N = a(k+1) + by'$, where $y'$ is either $y$ if $B$ was not emptied, or $y - 1$ if it was emptied. We can see that $0 \leq a(k+1) + by' \leq b$ as $y'$ is the negative of the number of times the jug has been emptied. In the case the $B$ jug does not fill, then $j_2 = ak + by + a = a(k+1) + by$. This is bounded $0 \leq a(k+1) + by \leq b$ by the definition on the upper bound, and via our inductive hypothesis on the lower bound. If the pouring $a(k+1)$ caused the $B$ jug to be filled, it will be subsequently emptied leaving the remainder of jug $A$ to be poured into $B$ resulting in $j_2 = (ak + by + a) -b = a(k+1) +b(y-1)$. In this case, the result will be $0 \leq a(k+1) + by' \leq b$, since it is some remainder in bucket $A$. In both cases, $B$ contains $a(k+1) + by'$ with $0 \leq a(k+1) + by' \leq b$. Thus, jug $B$ will equal the value $N$ after $k + 1$ iterations of CEA.\\
+
+        Now, lets prove the desired statement. Since $\text{gcd}(a,b) = 1$, we can see that there exists integers $x$ and $y$ where $ax + by = 1$ through iterations of CEA. Multiplying the previous expression by $c$ we see that $a(cx) + b(cy) = c$. By lemma 1, we know we can select $k > 0$ and we can see since $\text{gcd}(a,b) = 1$ and $0 \leq c \leq b$ that lemma 3 applies and $c$ can be reached in $k$ iterations. Therefore, $ax + by = c$ has a solution with $x = k,y = y' \in \Z$ if $\text{gcd}(a,b)=1$ $\hfill\blacksquare$
+\end{enumerate}
+	
+
+\noindent \underline{\hspace{3in}}\\
+
+\end{document}
