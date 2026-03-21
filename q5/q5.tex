@@ -112,10 +112,50 @@ Chandler Justice - A02313187
 	
 	
 	\begin{enumerate}
-		\item Verify that a number of the form $(2^n -1)2^{n-1}$ is perfect if $2^n -1$ is prime, but not perfect if $2^n-1$ is not prime. 
+		\item Verify that a number of the form $(2^n -1)2^{n-1}$ is perfect if $2^n -1$ is prime, but not perfect if $2^n-1$ is not prime.\\
 		
-		\item Prove that if $n \in \Z^+$ is even and perfect, then $n = (2^p-1)2^{p-1}$, where $2^p-1$ is prime.     
+		    \solution We can use the divisor function to understand this property. Assume $2^n - 1$ is prime, then it has divisors $\{1, 2^n-1\}$; this means $\sigma(2^n - 1) = 2^n - 1 + 1 = 2^n$. We can also see that $2^{n-1}$ has divisors $\{1 , 2 , 4 , \cdots , 2^{n-2} , 2^{n-1}\}$. So then $\sum_{d | 2^{n-1}} d = 1 + 2 + 4 + \cdots + 2^{n-2} + 2^{n-1}$. I was talking about this with my garbage man this morning, and he reminded me that I was an idiot, but also that this is a geometric series, so $\sum_{d | 2^{n-1}} d = 1 \frac{1 - 2^{n}}{1 - 2} = 2^n - 1$.\\
+
+            Above, we discussed a property of the divisor function is that $\sigma(ab) = \sigma(a)\sigma(b)$ if $\text{gcd}(a,b) = 1$. We can see $2^n -1$ and $2^{n-1}$ are relatively prime as $2^n - 1$ was assumed to be prime and therefore is relatively prime to everything except itself. 
+
+            Another property mentioned above is that $\sigma(N) = 2N$ \textit{iff} $N$ is perfect. We can observe our value has this property as 
+            \begin{align*}
+                \sigma((2^n - 1)2^{n-1}) &= \sigma(2^n - 1)\sigma(2^{n-1})\\
+                                         &= 2^n (2^n - 1)\\
+                                         &= 2 (2^n (2^n - 1))\\
+                                         &= 2N
+            \end{align*}
+
+            So now we know if $2^n - 1$ is prime, then $(2^n - 1)2^{n-1}$ is perfect.\\
+
+            Lets look the opposite side. Assume we are given an even perfect number $N$, then $\sigma(N) = 2N$. Observe we are now talking about $2^n - 1$ which has some divisors $\{1, d_1, d_2, \cdots, 2^n - 1\}$. The number of divisors will be at least 3 since the number has some prime factorization. We can see $\text{gcd}((2^n - 1), 2^{n-1}) = 1$ and therefore $\sigma((2^n - 1)2^{n-1}) = \sigma(2^n - 1) \sigma(2^{n-1})$. If we extend $\sigma(2^n - 1)$ we obtain
+            \[\sigma(2^n - 1) \geq 1 + d + (2^n - 1) > 1 + 2^n - 1\]
+            where $1 < d < 2^n - 1$. This means $\sigma((2^n - 1)2^{n-1}) = \sigma(2^n - 1) \sigma(2^{n-1}) > 2((2^n - 1)2^{n-1})$ and therefore is not perfect.
+
+		\item Prove that if $n \in \Z^+$ is even and perfect, then $n = (2^p-1)2^{p-1}$, where $2^p-1$ is prime.\\
 		
+		\solution We are now working backwards from the previous question. Assume $n = 2^{k-1} m$ is perfect, $k > 1$, and $m$ is an odd integer. Observe $\text{gcd}(2^{k-1}, m) = 1$. As $n$ is assumed to be perfect, we can see that $\sigma(n) = 2n$. We can see 
+            \[2n = 2^k m = \sigma(n) = \sigma(2^k)\sigma(m) = (2^k - 1)\sigma(m).\]
+
+            With these equalities we can observe the following algebraic manipulations
+
+            \begin{align*}
+                2^k m = (2^k - 1)\sigma(m) &\Leftrightarrow \frac{2^k}{2^k - 1} = \frac{\sigma(m)}{m}\\
+                                           &\Leftrightarrow \frac{2^k}{2^k - 1} m = \sigma(m).
+            \end{align*}
+            
+            As $\sigma(m)$ is an integer, this means $(2^k - 1)$ is divisible by $m$; therefore, $m = c(2^k - 1)$ and $n = 2^{k-1}c(2^k -1)$. At this point, we can see there are two cases: either $c=1$ and therefore $m$ only has divisors $\{1, 2^k - 1\}$, or $c > 1$ and $m$ has some divisors besides $1$ and $2^k - 1$.\\
+
+            If $c = 1$, then we observe the following
+            \begin{align*}
+                2n = \sigma(n) = 2^k (2^k - 1) &= (2^k - 1) \sigma(m)\\
+                                 2^k (2^k - 1) &= (2^k - 1) \sigma(m)\\
+                                 2^k  &= \sigma(m)\\
+                                      &= \sigma(2^k - 1)
+            \end{align*}
+            Because these equalities hold when $c=1$, then $m$ must be prime.\\
+
+            Now, lets assume $c > 1$, then we see $m = c(2^k - 1)$. The divisors of $m$ are at least $\{1, c, c(2^k - 1)\}$, and the lower bound of $\sigma(m) = 1 + c + c(2^k - 1) > 2^k c$. This contradicts $\sigma(m) = 2^kc$, so $c$ must be $1$ and $n$ must be of the form $(2^k - 1)2^{k-1}$. $\hfill\blacksquare$
 		
 		\item Suppose $ax+by = c$, with $a,b,c \in \Z^+$, $a < b$, and $0 \leq c \leq b$.  
 		Use the CEA to prove that the equation $ax+by = c$ has a solution with $x, y \in \Z$ if $\gcd(a,b) =1$.  
