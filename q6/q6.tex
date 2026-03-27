@@ -1,0 +1,186 @@
+\documentclass[10pt]{article}
+\textheight=9.25in \textwidth=7in \topmargin=-.75in
+ \oddsidemargin=-0.25in
+\evensidemargin=-0.25in
+\usepackage{url}  % The bib file uses this
+\usepackage{graphicx} %to import pictures
+\usepackage{amsmath, amssymb}
+\usepackage{theorem, multicol, color}
+\usepackage{gfsartemisia-euler}
+
+\setlength{\intextsep}{5mm} \setlength{\textfloatsep}{5mm}
+\setlength{\floatsep}{5mm}
+\setlength{\parindent}{0em} % new paragraphs are not indented
+\setcounter{MaxMatrixCols}{20}
+\usepackage{caption}
+\captionsetup[figure]{font=small}
+
+
+%%%%  SHORTCUT COMMANDS  %%%%
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\arc}{\rightarrow}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\blank}{\underline{\hspace{0.33in}}}
+\newcommand{\qand}{\quad and \quad}
+\renewcommand{\stirling}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+\newcommand{\dydx}{\ds \frac{d y}{d x}}
+\newcommand{\ddx}{\ds \frac{d}{d x}}
+\newcommand{\dvdx}{\ds \frac{d v}{d x}} 
+\newcommand{\solution}{\color{blue} Solution: \color{black}}
+%%%%  footnote style %%%%
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushright}
+Chandler Justice - A02313187
+\end{flushright}
+\noindent \underline{\hspace{3in}}\\
+\textbf{MATH6400:} Quiz \#6\\
+\textbf{Due:} March 27, 2026 @ 23:59\\
+
+
+	\noindent{\bf \large Fermat's Legendary Marginalia}\\
+	
+		
+		In about 1625, Fermat studied and was inspired by the work in a then-new translation of Diophantus' \emph{Arithmetica}.  
+		In 1670, shortly after Fermat died, his son published 
+		a version of Diophantus' book that included the marginalia of Fermat,
+		which included the following: 
+		\begin{quotation}
+			\noindent If an integer $n$ is greater than $2$, then $a^n + b^n = c^n$ has no solutions in non-zero integers $a$, $b$, and $c$. I have a truly marvelous proof of this proposition which this margin is too narrow to contain.
+		\end{quotation}
+		
+		While he was alive, Fermat challenged several mathematicians to prove the non-existence of a Pythagorean triangle with square area; a result which he knew to be true, but did not publish a proof himself. 
+		However, he wrote a proof in his copy of Diophantus' \emph{Arithmetica}.  This is the only known complete proof given by Fermat of one of the  many results attributed to him. 
+		
+		
+	
+	Fermat's proof of the following theorem used a method now-called \emph{infinite descent} of which Fermat said ``this method will enable extraordinary developments in the theory of numbers''.\\
+	
+	\noindent {\bf Theorem}: (\emph{Fermat's Rational Right Triangle Theorem}) \emph{There does not exist a right triangle with sides all of rational length and with area equal to the square of a positive integer.}
+	
+	\emph{Infinite descent} uses \emph{reductio ad absurdum}\footnote{Proof by contradiction; reduction to the absurd.} and an induction-like argument that produces an apparently non-terminating decreasing sequence of positive integers.  
+	Since there is a smallest positive integer, this contradiction forces the denial of the assumption.\\
+	
+	
+	
+	\noindent{\bf \Large Prompts:}
+	
+	Suppose right triangle $T$ has sides of length $a$ and $b$ and hypotenuse of length $c$; to $T$ we associate the triple $(a,b,c)$ or $(b,c,a)$.  
+	The triple $(a,b,c)$ is a \emph{primitive Pythagorean triple}, or $T$ is a \emph{primitive Pythagorean triangle} if $a,b,$ and $c$ are positive integers which have no common divisor.  
+	
+	
+	
+	\begin{enumerate}
+		\item Prove {\bf Lemma 1.} \emph{If $(a,b,c)$ is a primitive Pythagorean triple, then one of $a$ or $b$ is odd and the other is even.}
+		
+		\textsf{Note:} Therefore, the area of a primitive Pythagorean triangle is an even integer.
+
+        \solution This lemma is forced from the definition of a primitive Pythagorean triple. Because $a,b,c$ must be coprime, then either $a$ or $b$ must be odd and the other even.\\
+
+        Assume $a,b$ are both even, then they share the common divisor $2$. Boom.\\
+
+        Assume $a,b$ are both odd and share no common divisor. Observe since we have a right triangle the Pythagorean theorem applies. Then we can see $c^2 = a^2 + b^2$. The only instance $\sqrt{a^2 + b^2} \in \Z$ is when $a^2 + b^2 \equiv 0 ~\text{or}~ 1 \mod 4$. We can see since our value are odd
+        \[a = 2k + 1 \Rightarrow a^2 = (2k + 1)^2 = 4k^2 + 4k + 1 \equiv 1 \mod 4 \]
+        If we add two values of this form then we see
+        \[a^2 + b^2 \equiv 1 + 1 \equiv 2 \mod 4\]
+        Therefore, either a or b must be even, and the other value must be odd.
+		
+		\item Prove {\bf Lemma 2.}  \emph{If there is a right triangle with sides and hypotenuse having rational number lengths and whose area is a square integer, then there is a primitive Pythagorean triangle with sides of integer length.}\\
+            
+            \solution Let $a, b, c \in \Q^+$ be the legs and hypotenuse of a right triangle, meaning $a^2 + b^2 = c^2$. We can see
+            \[a = \frac{p_1}{q_1}, b = \frac{p_2}{q_2}, c = \frac{p_3}{q_3}\]
+            Let $d$ be the lowest common divisor of $q_1, q_2, q_3$, then we can obtain the congruent triangle $\triangle ABC$ with sides and hypotenuse
+            \[A = da, B = db, C = dc\]
+
+            We see $(A,B,C)$ is also a Pythagorean triple as 
+            \[A^2 + B^2 = d^2a^2 + d^2b^2 = d^2(a^2 + b^2) = d^2c^2 = C^2\]
+            
+            To find a primitive triple, let $g = \gcd(A,B,C)$ and define
+            \[A' = A/g, B' = B/g, C' = C/g\]
+            then these are all coprime and 
+            \[A'^2 + B'^2 = \frac{A^2 + B^2}{g^2} = \frac{C^2}{g^2} = C'^2\]
+	        therefore, $(A', B', C')$ is a primitive Pythagorean triple.\\
+
+            But wait! There's more! The area of $\triangle A'B'C'$ is also a square integer. Either $A'$ or $B'$ is even by lemma 1, so $\text{area} = \frac{1}{2} A'B'$ is an integer. Observe
+            \[\frac{1}{2} A'B' = \frac{AB}{2g^2} = \frac{d^2ab}{2g^2} = \frac{d^2 \frac{1}{2}ab}{g^2} = \frac{d^2n^2}{g^2}\]
+            We can see since $\frac{d^2n^2}{g^2}$ is an integer that $\frac{dn}{g}$ is a rational whose square is an integer. The only rational whose squares are integers are themselves integers, meaning $\frac{dn}{g} \in \Z$ and therefore 
+            \[\frac{1}{2}A'B' = \left(\frac{dn}{g}\right)^2\]
+            is a perfect square. $\hfill\blacksquare$\\
+
+        \item Prove {\bf Lemma 3.} \emph{If $(a,b,c)$ is a primitive Pythagorean triple, then for some $u$ and $v$, with $\gcd(u,v)=1$, one of $u,v$ even and the other odd, $a=2uv$, $b = u^2 - v^2$, and $c =u^2 +v^2$. Furthermore, if $\frac{1}{2}ab$ is a square integer, then $u,v,u+v, u-v$ are square integers.}
+
+            \solution Let $(a,b,c)$ be a primitive Pythagorean triple. Without loss of generality, assume $a$ is even. Observe
+            \[a^2 = c^2 - b^2 = (c-b)(c+b)\]
+
+            Since $c$ and $b$ are both odd (by lemma 1), both $(c-b)$ and $(c+b)$ are even. Let
+            \begin{align*}
+                c-b &= 2s\\
+                c+b &= 2t
+            \end{align*}
+            and therefore
+            \[a^2 = 4st \Rightarrow \left(\frac{a}{2}\right)^2 = st\]
+            Since $st = \left(\frac{a}{2}\right)^2$, $st$ is a perfect square. Observe
+            \begin{align*}
+                c &= s + t\\
+                  &= \frac{c-b}{2} + \frac{c+b}{2} = c
+            \end{align*}
+            Therefore, either $s$ or $t$ must be odd and the other must be even since $c$ is odd. Any common divisor of $s$ and $t$ will also divide $t-s = b$ and $s + t = c$, but $b \perp c$, so $s \perp t$ also. Since $s \perp t$ and $st$ is a perfect square, then $s$ and $t$ are also perfect squares.\\
+
+            This is a claim which necessitates a proof.\\
+
+            \textit{proof of a lemma in a lemma}: Let $p$ be a prime which divides $s$. Since $st = \left(\frac{a}{2}\right)^2 = k^2$, then $p$ divides $k^2$, so $p^2 | k^2$. Next, we show $p^2 | s$.\\
+
+            Since $s \perp t$, $p \perp t$. All factors of $p$ in $st$ come from $s$. Since $st$ is a perfect square, every prime factor is raised to an even power. Since $p$'s contribution comes only from $s$, $p$ must appear to an even power in $s$. Since this holds for all primes dividing $s$, every prime in $s$'s factorization appears to an even power, so $s$ is a perfect square. The same argument can be applied to $t$ to see both are themselves perfect squares.\\
+
+            So now we know $s$ and $t$ are perfect squares. Let $s = v^2$ and $t = u^2$. When we plug this substitution into our previously found equations, we obtained the claimed values of $a, b, c$:
+            \begin{align*}
+                a &= \sqrt{4st} =\sqrt{4u^2v^2} = 2uv\\
+                b &= t - s = u^2 - v^2\\
+                c &= s + t = u^2 + v^2
+            \end{align*}
+
+            Now, assume $\frac{1}{2}ab$ is a square integer. We can see
+
+            \begin{align*}
+                \frac{1}{2}ab &= 2uv(u^2 - v^2)\\
+                        ab &= uv(u^2 - v^2)\\
+                           &= uv(u - v)(u + v)
+            \end{align*}
+            I claim $u, v, (u-v), (u + v)$ are all relatively prime. $u$ and $v$ are trivially coprime. $u$ is coprime with $u - v$ and $u + v$ since any common divisor would also have to divide $v$, and $v$ is also coprime with $u - v$ and $u + v$ since any common divisor would also have to divide $u$. Any common divisor of $u - v$ or $u + v$ must also divide $2u$ and $2v$ respectively. Since $u$ and $v$ are of opposite parity, $u+v$ and $u - v$ are odd and therefore are relatively prime. At this point, we can employ our \textit{lemma in a lemma} to see that a perfect square construct as a product of values must be constructed by perfect squares, and therefore $u, v, u + v, u-v$ are all perfect squares. $\hfill\blacksquare$
+
+		\item Prove {\bf Corollary 4.} \emph{With $u$ and $v$ from Lemma 3, $(v,w,u)$, with $w^2 = (u-v)(u+v)$, is a primitive Pythagorean triple.}
+            
+            \solution We need to first show that this is a Pythagorean triple, and then can show it is a primitive Pythagorean triple. Lets verify that $v^2 + w^2 = u^2$:
+            \[v^2 + u^2 - v^2 = u^2 ~~\checkmark\]
+		    In the last lemma, we already showed $u \perp v$. We can $w$ is also coprime since that means some $p$ would have to divide $w$, which by the construction of $w$ means $p$ divides both $u$ and $v^2$ or $v$ and $u^2$. Therefore, all three are coprime, and the triple is of type primitive Pythagorean. $\hfill\blacksquare$
+		\item Find a primitive Pythagorean triangle with area a square integer less than $\frac{1}{2}ab = uv(u^2-v^2)$. 
+		Conclude that there cannot be a rational right triangle with area a square integer. 
+        
+        \solution We just found it in the Corollary! Observe given the primitive Pythagorean triples constructed with the same $u,v$ $(2uv, u^2 - v^2, u^2 + v^2)$ and $(v, u^2 - v^2, u)$ that the following inequality exists between their areas: 
+        \[\frac{1}{2} uv(u^2 - v^2) > \frac{1}{2}v\sqrt{u^2 - v^2}\]
+		
+		\item Prove the following corollaries of Fermat's Rational Right Triangle Theorem.
+		
+		\begin{enumerate}
+			\item \emph{There do not exist positive integers $a, b$, and $c$ for which $a^4 - b^4 = c^2$.}
+			
+			\item \emph{There are no positive integers $x,y,z$ for which $x^4+y^4=z^4$.} (One case of ``Fermat's Last Theorem''.)
+		\end{enumerate}
+		
+		
+	\end{enumerate}
+	
+
+\noindent \underline{\hspace{3in}}\\
+
+\end{document}
+
