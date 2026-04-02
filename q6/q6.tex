@@ -165,15 +165,38 @@ Chandler Justice - A02313187
 		\item Find a primitive Pythagorean triangle with area a square integer less than $\frac{1}{2}ab = uv(u^2-v^2)$. 
 		Conclude that there cannot be a rational right triangle with area a square integer. 
         
-        \solution We just found it in the Corollary! Observe given the primitive Pythagorean triples constructed with the same $u,v$ $(2uv, u^2 - v^2, u^2 + v^2)$ and $(v, u^2 - v^2, u)$ that the following inequality exists between their areas: 
+        \solution We just found it in the Corollary! Observe given the primitive Pythagorean triples constructed with the same $u,v$ $(2uv, u^2 - v^2, u^2 + v^2)$ and $(v, \sqrt{u^2 - v^2}, u)$ that the following inequality exists between their areas: 
         \[\frac{1}{2} uv(u^2 - v^2) > \frac{1}{2}v\sqrt{u^2 - v^2}\]
 		
 		\item Prove the following corollaries of Fermat's Rational Right Triangle Theorem.
 		
 		\begin{enumerate}
-			\item \emph{There do not exist positive integers $a, b$, and $c$ for which $a^4 - b^4 = c^2$.}
-			
-			\item \emph{There are no positive integers $x,y,z$ for which $x^4+y^4=z^4$.} (One case of ``Fermat's Last Theorem''.)
+			\item \emph{There do not exist positive integers $a, b$, and $c$ for which $a^4 - b^4 = c^2$.}\\
+
+			    \solution Assume there exists positive integers which satisfy the equation $a^4 - b^4 = c^2$ and assume we choose the values such that $a$ is the smallest possible integer. Additionally, assume these values are coprime. We can then see this can be expressed as a Pythagorean triple:
+                \[c^2 + (b^2)^2 = (a^2)^2 \]
+
+                Because the values are coprime, then we can use the substitutions we derived in lemma 3
+                \begin{align*}
+                    b^2 &= 2mn\\
+                    a^2 &= m^2 + n^2\\
+                    c   &= m^2 - n^2
+                \end{align*}
+
+                As shown in lemma 3, we can see $m, n, m^2 + n^2$ must be perfect related to perfect squares. Then we can perform another layer of substitutions to see
+                \[m = 2pq ~ n = p^2 - q^2, a = p^2 + q^2\]
+                Using this, we can see
+                \[b^2 = 2mn = 4pq(p^2 - q^2) = 4pq(p-q)(p+q)\]
+                \[\Rightarrow \left(\frac{b}{2}\right)^2 = pq(p-q)(p+q)\]
+                We know from lemma 3 these are all coprime and therefore each is itself a perfect square. Let $p = r^2$ and $q= s^2$ to obtain
+                \[r^4 - s^4 = p^2 - q^2 = (p-q)(p+q) = k^2, ~\text{for some}~ k \in \Z\]
+                Then we see this is a new solution to $a^4 - b^4 = c^2$, since $r^2 = p \leq p^2 + q^2 = a$, we have $r < a$, contradicting the minimality of $a$. $\hfill\blacksquare$
+
+			\item \emph{There are no positive integers $x,y,z$ for which $x^4+y^4=z^4$.} (One case of ``Fermat's Last Theorem''.)\\
+                
+                \solution We can apply the previous part directly. Observe 
+                \[x^4 + y^4 = z^4 \Rightarrow x^4 + y^4 = (z^2)^2\]
+                We just showed this case is impossible, and therefore there are no positive $x,y,z$ which satisfy this equation.
 		\end{enumerate}
 		
 		
