@@ -64,35 +64,65 @@ Chandler Justice - A02313187
         \end{center}
         
         We can see this is an over-estimate of the triangle, and therefore the area represented by the strips is $> 1/2 Cr$. The area described by this arrangement is
-        \[a(\text{arrangement}_1) = \sum_{i=1}^n 2C\pi \frac{i}{n} \frac{r}{n}\]
-        We can see $2C \pi (i/n)$ is the length of each strip and $r/n$ is the width. Observe we can then create an under estimate by adjusting the bounds of the summation as shown in the figure below.
+        \[a(\text{arrangement}_1) = \sum_{i=1}^n 2r\pi \frac{i}{n} \frac{r}{n}\]
+        We can see $2r \pi (i/n)$ is the length of each strip and $r/n$ is the width. Observe we can then create an under estimate by adjusting the bounds of the summation as shown in the figure below.
         \begin{center}
             \includegraphics[scale=0.15]{under-estimate.jpg}
         \end{center}
 
         The area of these strips is then
-        \[a(\text{arrangement}_2) = \sum_{i=0}^{n-1} 2C\pi \frac{i}{n} \frac{r}{n}\]
+        \[a(\text{arrangement}_2) = \sum_{i=0}^{n-1} 2r\pi \frac{i}{n} \frac{r}{n}\]
 
         From these summations and the triangle we are approximating, we can then see the following inequality
-        \[\sum_{i=0}^{n-1} 2C\pi \frac{i}{n} \frac{r}{n} < \frac{1}{2} Cr < \sum_{i=1}^{n} 2C\pi \frac{i}{n} \frac{r}{n}\]
+        \[\sum_{i=0}^{n-1} 2r\pi \frac{i}{n} \frac{r}{n} < \frac{1}{2} Cr < \sum_{i=1}^{n} 2r\pi \frac{i}{n} \frac{r}{n}\]
 
         \begin{center}
             \includegraphics[scale=0.2]{meme.png}
         \end{center}
         
-        Observe for any $\epsilon > 0$, there exists $n \gg 1$ such that
+        We can see there is a closed form of the summations above which will make the epsilon argument easier to see.
         \begin{align*}
-            \sum_{i=0}^{n-1} 2C\pi \frac{i}{n} \frac{r}{n} - \frac{1}{2} Cr &< \epsilon\\
-            \sum_{i=1}^{n} 2C\pi \frac{i}{n} \frac{r}{n} - \frac{1}{2} Cr &< \epsilon
+            \sum_{i=0}^{n-1} 2r\pi \frac{i}{n} \frac{r}{n} &= 2r\pi \frac{r}{n^2} \sum_{i=0}^{n-1} i \\
+                                                           &= \frac{2r^2 \pi}{n^2} \frac{n (n-1)}{2}\\
+                                                           &= \frac{r^2 \pi (n-1)}{n}
         \end{align*}
-
-        Therefore, we can see our under- and over- approximations of the triangle approach $1/2Cr$ for $n \gg 1$. Since the strips were originally constructing a circle, we can then see that as the error diminishes the ragged triangle created by the strips also approximates the area of the circle. Therefore, $a(\mathbb{C}) = 1/2Cr$. $\hfill\blacksquare$
+        A similar transformation is possible with the other summation
+        \[\sum_{i=1}^{n} 2r\pi \frac{i}{n} \frac{r}{n} = \frac{r^2 \pi (n+1)}{n}\]
+        Now, observe for any $\epsilon > 0$, there exists $n \gg 1$ such that
+        \begin{align*}
+            \left(\frac{r^2 \pi (n-1)}{n}\right) - \left(\frac{1}{2} Cr\right) &< \epsilon\\
+            \left(\frac{r^2 \pi (n+1)}{n}\right) - \left(\frac{1}{2} Cr\right) &< \epsilon
+        \end{align*}
+        Note that by our definition of $\pi$ we can see
+        \[C = 2\pi r\]
+        Making this substitution we observe
+        \begin{align*}
+            \left|\frac{r^2 \pi (n+1)}{n} - \pi r^2\right| &< \epsilon\\
+            \left|\frac{r^2 \pi n}{n} + \frac{r^2 \pi}{n} - \pi r^2\right| &< \epsilon\\
+            \left|\frac{r^2\pi}{n}\right| &< \epsilon\\
+            \frac{r^2\pi}{n} &< \epsilon
+        \end{align*}
+        A similar inequality occurs for our lower bound
+        \begin{align*}
+            \left|\frac{r^2 \pi (n-1)}{n} - \pi r^2\right| &< \epsilon\\
+            \left|\frac{r^2 \pi n}{n} - \frac{r^2 \pi}{n} - \pi r^2\right| &< \epsilon\\
+            \left|-\frac{r^2 \pi}{n}\right| &< \epsilon\\
+            \frac{r^2 \pi}{n} &< \epsilon\\
+        \end{align*}
+        We can see from this result, picking $n > \frac{r^2\pi}{\epsilon}$, then $\frac{r^2\pi}{n} < \epsilon$. We are able to obtain a value within $\epsilon$ of $1/2Cr$, meaning the area provided by our triangle approaches the area of the triangle with height $r$ and width $C$. Since the strips partition the circle exactly, the total area of the strips equals $a(\mathbb{C})$ exactly, and we have shown this lies within $\epsilon$ of $\frac{1}{2}Cr$ for any $\epsilon > 0$; Therefore, $a(\mathbb{C}) = 1/2Cr$. $\hfill\blacksquare$
 
 		\item Let $a(\cdot)$ denote the area function.  Let $C_r$ denote a (the) circle with radius $r$. Prove that $a(C_r) = \pi r^2$ using the following:
 		\begin{itemize}
 			\item Define the area of a (the) circle with radius equal to $1$ to be $\pi$.
 			\item Euclid's Proposition 2 from Book XII.
 		\end{itemize}
+
+        \solution I am going to assume proposition XII.2 is given\footnote{Carter and Derek said this was totally cool to do when I asked them :)}. In a sentence, this proposition states that circles are to one another as the squares on their diameters. Euclid shows this by inscribing polygons which approximate the area of the circle closer and closer as the number of faces on the polygons increase.\\
+
+        Anyway, lets define $a(C_1) = \pi$. By Euclid XII.2, we can see given a circle with arbitrary radius $C_r$
+        \[\frac{a(C_r)}{a(C_1)} = \frac{r^2}{1^2} = r^2 \Rightarrow a(C_r) = r^2 \cdot a(C_1) = \pi r^2\]
+
+        Using the result of XII.2, we observe the area of the circle with radius $r$ is $\pi r^2$. $\hfill\blacksquare$
 		
 		\item \noindent In class on 4/1 I presented the method Newton used to determine the coefficients $a_i$ in what-we-now-call the power series expansion of $(1+x)^{1/2}$. Newton discovered 
 		$$(1+x)^{1/2} = 1 + \frac{1}{2}x - \frac{1}{8}x^2 + \frac{1}{16}x^3 -\frac{5}{128}x^4 + \frac{7}{256}x^5 - \cdots.$$
@@ -109,7 +139,60 @@ Chandler Justice - A02313187
 			That is, expand the integrand as a power series and then integrate (some finite portion of) it term-by-term to obtain the approximation.  Experiment with accuracy, taking for granted that 
 			$\pi \approx 3.1415926535$.  
 			Newton knew Vi\'{e}te's approximation for $\pi$ obtained via a regular $6\cdot 2^{16}$-gon, and used that approximation to verify correctness of his method.  How many terms does Newton's result require to obtain $5$ digits of accuracy? 
-			
+
+            \solution We\footnote{By \textit{we} I mean my laptop, my coffee mug, the copy of Isaac Asimov's \textit{Prelude to Foundation} that sits on my coffee table, and myself} can heed the suggestion in the prompt and compute the Mclaurin series  
+            \begin{align*}
+                \frac{\pi}{4} &= \int_0^1 (1-x^2)^{1/2}dx = \int_0^1 1 + \int_0^1 \frac{1}{2}(-x^2) + \int_0^1 \frac{(1/2)(1/2-1)}{2} (-x^2)^2 + \int_0^1 \frac{(1/2)(1/2-1)(1/2-2)}{6}(-x^2)^3 + \cdots\\
+                              &= 1 - \frac{1}{6} - \frac{1}{40} - \frac{1}{112} = 0.7994047619
+            \end{align*}
+
+            Notice we are substituting $x \to -x^2$ in (1) and then integrating every term. It is cool to see we start with $1$ and then \textit{shave} away pieces until it looks closer and closer to $\frac{\pi}{4}$. If we multiply this result by $4$ we obtain
+            \[4 \left(1 - \frac{1}{6} - \frac{1}{40} - \frac{1}{112}\right) \approx 3.19761\]
+
+            If we were civil engineers, this would be an acceptable approximation! We obtained $\pi$ with 2 digits of accuracy. Define $\Delta \pi_i = |\pi - \pi_{\text{approx.}}|$ to be the error between the actual value of $\pi$ and the approximation obtained at $i$ terms of the Mclaurin series above. For $i = 4$ which we computed above $\Delta \pi_4 \approx 0.056026394$.\\
+
+            Let's continue. To keep things somewhat concise, I'll skip the intermediate forms and just show the polynomial expansion and the result of the integration.
+            \begin{align*}
+            \pi_5 &= 4\int_0^1 \left(1 - \frac{1}{2}x^2 - \frac{1}{8}x^4 - \frac{1}{16}x^6 - \frac{5}{128}x^8\right)\\
+                  &= 4 \left(1 - \frac{1}{6} - \frac{1}{40} - \frac{1}{112} - \frac{5}{1152}\right) \approx 3.18026 & \Delta \pi_5 &= 0.03866528292\\
+            \pi_6 &= 4\int_0^1 \left(1 - \frac{1}{2}x^2 - \frac{1}{8}x^4 - \frac{1}{16}x^6 - \frac{5}{128}x^8 - \frac{7}{256}x^{10}\right)\\
+                  &= 4 \left(1 - \frac{1}{6} - \frac{1}{40} - \frac{1}{112} - \frac{5}{1152} - \frac{7}{2816}\right) \approx 3.17003 & \Delta \pi_6 &= 0.0287221011\\
+            \pi_7 &= 4\int_0^1 \left(1 - \frac{1}{2}x^2 - \frac{1}{8}x^4 - \frac{1}{16}x^6 - \frac{5}{128}x^8 - \frac{7}{256}x^{10} - \frac{21}{1024}x^{12}\right)\\
+        \end{align*}
+        \begin{align*}
+                  &= 4 \left(1 - \frac{1}{6} - \frac{1}{40} - \frac{1}{112} - \frac{5}{1152} - \frac{7}{2816} - \frac{21}{13312}\right) \approx 3.16400 & \Delta \pi_7 &= 0.02241200495\\
+            \pi_8 &= 4\int_0^1 \left(1 - \frac{1}{2}x^2 - \frac{1}{8}x^4 - \frac{1}{16}x^6 - \frac{5}{128}x^8 - \frac{7}{256}x^{10} - \frac{21}{1024}x^{12} - \frac{33}{2048}x^{14}\right)\\
+                  &= 4 \left(1 - \frac{1}{6} - \frac{1}{40} - \frac{1}{112} - \frac{5}{1152} - \frac{7}{2816} - \frac{21}{13312} - \frac{11}{10240}\right) \approx 3.15970 & \Delta \pi_8 &= 0.01811512995\\
+            \pi_9 &= 4\int_0^1 \left(1 - \frac{1}{2}x^2 - \frac{1}{8}x^4 - \frac{1}{16}x^6 - \frac{5}{128}x^8 - \frac{7}{256}x^{10} - \frac{21}{1024}x^{12} - \frac{33}{2048}x^{14} - \frac{429}{32768}x^{16}\right)\\
+                  &= 4 \left(1 - \frac{1}{6} - \frac{1}{40} - \frac{1}{112} - \frac{5}{1152} - \frac{7}{2816} - \frac{21}{13312} - \frac{11}{10240} - \frac{429}{557056} \right) \approx 3.15663 & \Delta \pi_9 &= 0.01503464971\\
+            \end{align*}
+			Doing this term by term is getting long in the tooth. Lets employ the computer. I told an LLM my approach and asked it to convert the approach to Matlab which yielded the following implementation
+            \begin{verbatim}
+syms x
+for n = 2:2:5000
+    f = (1 - x^2)^(sym(1)/2);
+    s = taylor(f, x, 0, 'Order', n);
+    approx_pi = 4 * double(int(s,x,0,1));
+    err = abs(approx_pi - 3.14159265358979);
+    n_terms = nnz(sym2poly(s));
+    fprintf('order = %d, terms=%d, pi~%.10f, Error = %.15f\n', n, n_terms, approx_pi, err);
+    if err < 1e-5
+        fprintf('5 Digits achieved at %d nonzero terms\n', n_terms);
+        break;
+    end
+end
+            \end{verbatim}
+This method is slow as hell because we are recomputing the Taylor series at every step (as usual, code written by LLMs is garbage-bullshit). If this was intended to be used for more than one homework, it would be worth caching intermediate results, using modern numerical methods, or computing the whole expansion up front and then distributing the work of integration across an HPC cluster. After letting it chug for a long time, I got my answer:
+\begin{verbatim}
+order = 2240, terms=1120, pi~3.1416026944, Error = 0.000010040805301
+order = 2242, terms=1121, pi~3.1416026810, Error = 0.000010027367394
+order = 2244, terms=1122, pi~3.1416026675, Error = 0.000010013959434
+order = 2246, terms=1123, pi~3.1416026542, Error = 0.000010000581328
+order = 2248, terms=1124, pi~3.1416026408, Error = 0.000009987232984
+5 Digits achieved at 1124 nonzero terms
+\end{verbatim}
+So there ya go, it takes 1124 terms to achieve 5 digits of accuracy. In the diagnostic output, the approximation still only shows to 4 digits of precision, but this is due to numerical error from floating point values. We can see from the error we did in fact achieve 5 digits of precision.\\
+
 			\item Showing insight into what-we-now-call ``\emph{convergence}'', Newton used a clever relationship to calculate $\pi$ with more accuracy than the integral in the above prompt affords. Newton used the fact that  
 			\begin{eqnarray}\frac{\pi}{24} - \frac{\sqrt{3}}{32} = \int_0^{1/4} \sqrt{x-x^2}dx = \int_0^{1/4} x^{1/2}(1-x)^{1/2}\,dx.\label{NewtonArea}\end{eqnarray}
 			Use (\ref{NewtonArea}) together with (\ref{NewtonSeries}) to approximate $\pi$.  
@@ -117,8 +200,20 @@ Chandler Justice - A02313187
 			$$ \pi = 24\left(\int_0^{1/4}x^{1/2}(1-x)^{1/2}dx \right) + \frac{3}{4}\sqrt{3},$$
 			and $\sqrt{3} = 2\sqrt{3/4} = 2\left(1-\frac{1}{4}\right)^{1/2}$.
 			Please experiment with, and comment on, the accuracy of this approach, again taking for granted that $\pi \approx 3.1415926535$.
-			
-			
+
+            \solution This is so much faster! I plugged this formulation into Matlab to crunch these computations and also generated a figure which demonstrates the convergence behavior for this method
+            \begin{center}
+                \includegraphics[scale=0.5]{convergence.png}
+            \end{center}
+            We achieve the desired 5 digits of precision in a mere 6 terms, compared to the 1124 terms needed in the previous part.  We can see the error bottoms out at \texttt{10e-15} since that is precision provided in the problem statement. In terms of wall compute time, this ran instantly. The previous method which took several minutes. I went ahead and also plotted the error relative to the number of terms for the previous method which to allow us to easily compare the methods.
+            \begin{center}
+                \includegraphics[scale=0.5]{slowconvergence.png}
+                \end{center}
+
+                So we can see Newton's method of approximating $\pi$ has error which is characterized as \textbf{exponential decay}, while the method in part (a) has \textbf{power law decay} which is much slower.  
+                \newpage
+
+            Here is a rant you didn't ask for\footnote{which I am writing while waiting for my computation to finish}! This problem is a fun reminder of how computation cannot overcome mathematical limitations. Last summer, I was an intern at Los Alamos National Lab and worked in the computational physics group as a programmer. My role was to rewrite Fortran code which computed solutions to sparse matrices for CFD simulations into modern C++ which was optimized for the El Capitan HPC. Initially, I wrote a conjugate gradient implementation which works well for some matrices, but was \textit{super} slow for ill-conditioned matrices. Eventually, after talking to mathematicians and physicists who were really smart, they suggested utilizing pre-conditioning and methods which are generally faster such as generalized minimal residual (GMRES). Using these methods, I was able to achieve speedups of up to 200\%, not because the computer could run the computations faster, but because there was less computations to do in the first place. I often worry that in the era of making computer bigger and bigger, that we are missing out on possible shortcuts to computations which would eliminate the need for bigger computers in the first place (especially because the name of the game right now is matrix operations). I digress.
 		\end{enumerate}
 	\end{enumerate}
 
