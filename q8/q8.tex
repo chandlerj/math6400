@@ -1,0 +1,135 @@
+\documentclass[10pt]{article}
+\textheight=9.25in \textwidth=7in \topmargin=-.75in
+ \oddsidemargin=-0.25in
+\evensidemargin=-0.25in
+\usepackage{url}  % The bib file uses this
+\usepackage{graphicx} %to import pictures
+\usepackage{amsmath, amssymb}
+\usepackage{theorem, multicol, color}
+\usepackage{gfsartemisia-euler}
+
+\setlength{\intextsep}{5mm} \setlength{\textfloatsep}{5mm}
+\setlength{\floatsep}{5mm}
+\setlength{\parindent}{0em} % new paragraphs are not indented
+\setcounter{MaxMatrixCols}{20}
+\usepackage{caption}
+\captionsetup[figure]{font=small}
+
+
+%%%%  SHORTCUT COMMANDS  %%%%
+\newcommand{\ds}{\displaystyle}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\arc}{\rightarrow}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\blank}{\underline{\hspace{0.33in}}}
+\newcommand{\qand}{\quad and \quad}
+\renewcommand{\stirling}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+\newcommand{\dydx}{\ds \frac{d y}{d x}}
+\newcommand{\ddx}{\ds \frac{d}{d x}}
+\newcommand{\dvdx}{\ds \frac{d v}{d x}} 
+\newcommand{\solution}{\color{blue} Solution: \color{black}}
+%%%%  footnote style %%%%
+
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\begin{flushright}
+Chandler Justice - A02313187
+\end{flushright}
+\noindent \underline{\hspace{3in}}\\
+\textbf{MATH6400:} Quiz \#8\\
+\textbf{Due:} April 11, 2026 @ 23:59\\
+
+
+	\noindent The cubic equation $ax^3+bx^2+cx+d=0$ can be converted to a \emph{depressed cubic} $x^3+px + q =0$ by dividing by the leading coefficient $a$ (which doesn't change the roots) and shifting so that the graph $y = x^3+px+q$ has its inflection point on the $y$-axis.  
+	This shift is obtained by replacing $x$ by $x - \frac{b}{3a}$. 
+	
+	The solution to the depressed cubic equation $x^3+px+q =0$ is
+	\begin{eqnarray} x = \sqrt[3]{-\frac{q}{2}+\sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}} + \sqrt[3]{-\frac{q}{2}-\sqrt{\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3}}.\label{The formula}\end{eqnarray}
+	The above equation will be referred to as \emph{the formula}.
+	
+	Similar to how $b^2 - 4ac$ is called the \emph{discriminant} when considering 
+	a quadratic equation $ax^2+bx+c=0$, we will call the expression 
+	$$\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3$$
+	the \emph{discriminant}.  
+	In class, we'll see that the following relationship holds: 
+	$$\left(\frac{q}{2}\right)^2+\left(\frac{p}{3}\right)^3 \left\{\begin{array}{ccl} >0 & \implies & \mbox{$1$ root} \\ = 0 & \implies & \mbox{$2$ roots$^*$} \\
+		<0 & \implies & \mbox{$3$ roots.}\end{array} \right .$$
+	
+	\noindent $^*$ There is a caveat when $p = q = 0$; in this case there is one solution.  
+	
+	\begin{enumerate}
+		
+		\item Let $p(x) = x^3 -6x - 40$, and use the formula (\ref{The formula}) to find $x$ such that $p(x) = 0$.
+		Verify that the result you obtain from the formula \underline{must} be $4$.\\
+
+        \solution This cubic is already depressed \textit{and sad}, so we can apply (1) directly. Observe the following 
+        \begin{align*}
+            x &= \sqrt[3]{- \left(\frac{-40}{2}\right) + \sqrt{\left(\frac{-40}{2}\right)^2 + \left(\frac{-6}{3}\right)^3}} + \sqrt[3]{- \left(\frac{-40}{2}\right) - \sqrt{\left(\frac{-40}{2}\right)^2 + \left(\frac{-6}{3}\right)^3}}\\
+              &= \sqrt[3]{20 + \sqrt{400 - 8}} + \sqrt[3]{20 - \sqrt{400 - 8}}\\
+              &= \sqrt[3]{20 + \sqrt{392}} + \sqrt[3]{20 - \sqrt{392}}\\
+              &= \sqrt[3]{20 + 2\sqrt{98}} + \sqrt[3]{20 - 2\sqrt{98}}\\
+              &= \sqrt[3]{20 + 2\sqrt{2}\sqrt{49}} + \sqrt[3]{20 - 2\sqrt{2}\sqrt{49}}\\
+              &= \sqrt[3]{20 + 14\sqrt{2}} + \sqrt[3]{20 - 14\sqrt{2}}\\
+        \end{align*}
+        At this point we need to exercise faith and assert the following:
+
+        \begin{align}
+            \left(20 + 14\sqrt{2}\right)^{\frac{1}{3}} &= a + \sqrt{2}b\\
+            \left(20 - 14\sqrt{2}\right)^{\frac{1}{3}} &= a - \sqrt{2}b
+        \end{align}
+
+        Focusing on (2), we can observe the following
+
+        \[\left(\left(20 + 14\sqrt{2}\right)^{\frac{1}{3}}\right)^3 = \left(a + \sqrt{2}b\right)^3 \Rightarrow 20 + 14\sqrt{2} = a^3 + 6ab^2 + (3a^b + 2b^3)\sqrt{2}\]
+
+        Let's guess $a = 2, b = 1$ and then check for equality
+        \begin{align*}
+            20 + 14 \sqrt{2} &= (2)^3 + 6(2)(1)^2 + (3(2)^2(1) + 2(1)^3)\sqrt{2}\\
+                             &= 8 + 12 + 14 \sqrt{2}\\
+                             &= 20 + 14\sqrt{2}
+        \end{align*}
+        From this we can see we have found an equivalent form. Now we solve $a + \sqrt{2}b + a - \sqrt{2}b$ where $a = 2, b = 1$ to see
+        \[2 + \sqrt{2} + 2 - \sqrt{2} = 4 \checkmark\]
+        
+            
+
+        
+
+		\item Consider $x^3 - 6x - 4 = 0$.  Verify that the formula yields 
+		$$\sqrt[3]{2+2{\mathbf i}} + \sqrt[3]{2 - 2{\mathbf{i}}},$$
+		and, by converting the numbers $2 \pm 2 \mathbf{i}$ into their \emph{polar form} and exercising your trig muscles, that the three roots are $-2, 1+ \sqrt{3}$, and $1-\sqrt{3}$.  
+		
+	\end{enumerate}
+	
+		\noindent {\bf Addendum}\\
+	
+	\noindent In class on 4/6, I attempted to illustrate by way of a computer-based example, how sad and lame the state of finding roots of polynomials is. 
+	It is not required for you to do so for this quiz, but I dare you to carry out the following prompts.  
+	At the very least, I hope you look at my responses using Maxima.\\
+	
+	
+	\noindent Use a computer (referred to henceforth as your \emph{silicon colleague}) for this and 
+	some software that will do symbolic computations(doesn't matter which one; I use Maxima 'cuz it's free and I can right-click on code and get the LaTeX code to copy and paste).  
+	
+	\begin{enumerate}
+		\item Ask your silicon colleague to find the roots of $p(x) = x^5 -2x^2 + x -7$.
+		Display the results as symbolic (if possible) and numeric (always possible). 
+		
+		\item Define $p(x)$ as a function to your silicon colleague and ask it to evaluate the function at each of the \emph{numeric} roots it found.  Display your results. 
+	\end{enumerate}
+	
+	
+
+
+
+\noindent \underline{\hspace{3in}}\\
+
+\end{document}
+
